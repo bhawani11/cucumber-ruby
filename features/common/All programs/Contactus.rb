@@ -2,7 +2,6 @@ require 'selenium-webdriver'
 # load in the Assertion gem to interact with selenium
 require "test/unit/assertions"
 include Test::Unit::Assertions
-
 driver = Selenium::WebDriver.for :chrome
 # driver = Selenium::WebDriver.for :Chrome.driver_path="C:\Ruby26-x64\bin\chromedriver.exe"
 wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -19,9 +18,7 @@ driver.get "https://www.hq.com/"
 wait.until{|document_initialised| driver}
 search = driver.find_element(:xpath,"//button[text()='Contact']").text
 "Hello from JavaScript!".eql? search
-
 driver.manage.window.maximize
-
 driver.manage.timeouts.implicit_wait = 10
 driver.find_element(:xpath,"//button[text()='Contact']").click
 driver.find_element(:xpath,"//input[@name='fullName1']").send_keys(name)
